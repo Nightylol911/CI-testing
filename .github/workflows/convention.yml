@@ -1,0 +1,20 @@
+name: Convention Checker
+
+on:
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    Linter:
+        runs-on: ubuntu-latest
+        
+        steps:
+            - uses: actions/checkout@v2
+            - name: Linter Python Checker
+              uses: github/super-linter@v4
+              env:
+                VALIDATE_ALL_CODEBASE: true
+                DEFAULT_BRANCH: main
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                VALIDATE_PYTHON: true
